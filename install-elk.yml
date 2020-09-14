@@ -7,6 +7,9 @@
       apt:
         name: docker.io
         state: present
+        
+    - name: Increase virtual memory
+      command: sysctl -w vm.max_map_count=262144
 
     - name: Install pip3
       apt:
