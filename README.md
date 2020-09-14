@@ -1,2 +1,2 @@
-# acript-ELK-project
+# script-ELK-project
 Creating ELK on Azure
