@@ -1,8 +1,8 @@
-##Elk-PROJECT
+# Elk-PROJECT
 
-Automated ELK Stack Deployment
+## Automated ELK Stack Deployment
 
-This document contains the following details:
+### This document contains the following details:
 
   •	Description of the Topology
   •	ELK Configuration
@@ -18,28 +18,28 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the ansible-playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-![Ansible-Playbook File]( https://github.com/trippyville/PROJECT-ELK/tree/master/Ansible)
+CLICK HERE for ![Ansible-Playbook File link]( https://github.com/trippyville/PROJECT-ELK/tree/master/Ansible)
 
-Description of the Topology
+### Description of the Topology
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 Load balancing ensures that the application will be highly AVAILABLE, in addition to restricting INBOUND ACCESS to the network. The Load Balancers will help SSL offload and traffic compression. Load balancer also protect applications from emerging threats, DDoS attacks, and authenticate user accounts.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the FILE SYSTEM OF THE VMs on the NETWORK and system METRICS. 
 	
-  •	FILEBEAT monitors the log files or locations that is specify, collects log, events, and forwards them to ELK. (source :Elastic.co)
-	•	METRICBEAT helps monitor servers by collecting metrics from the system and services running on the server, such as APACHE. (source: Elastic.co)
-T
-he configuration details of each machine may be found below. 
+  • FILEBEAT monitors the log files or locations that is specify, collects log, events, and forwards them to ELK. (source :Elastic.co)
+  • METRICBEAT helps monitor servers by collecting metrics from the system and services running on the server, such as APACHE. (source: Elastic.co)
+
+The configuration details of each machine may be found below. 
 
 | Name              | Function   | IP Address   | Operation System |
-|-------------------|------------|---------------------------------|
+|-------------------|------------|--------------|------------------|
 | JumpBox-Provision | Geteway    | 52.183.90.25 | Linux            |
 | REDteam-VM-DVWA   | Web-Server | 10.10.0.8    | Linux            |
 | BLUEteam-VM-DVWA2 | Web-Server | 10.10.0.11   | Linux            |
 | ELK               | Monitoring | 40.74.246.77 | Linux            |
 
-Access Policies
+## Access Policies
 
 The machines on the internal network are not exposed to the public Internet.
 Only the JUMPBOX machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses: 13.77.144.49 (root@90423f24817)
@@ -53,17 +53,17 @@ A summary of the access policies in place can be found in the table below.
 | REDteam  | NO                  | 10.10.0.8                                    |
 | BLUEteam | NO                  | 10.10.0.11                                   |
 
-Elk Configuration
+## Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it can set up various servers you need in your infrustracure like database, storage devices, networks, firewalls, etc.  (source: cloudacademy)
 
 The playbook implements the following tasks: 
 - 
-Scp -i id_rsa  install_elk.yml root@490423f24817:/root or create nano install_elk.yml copy and paste yml file.
+	Scp -i id_rsa  install_elk.yml root@490423f24817:/root or create nano install_elk.yml copy and paste yml file.
  
- apt update
- apt upgrade
- ansible-playbook install_elk.yml
+ 		apt update
+ 		apt upgrade
+ 		ansible-playbook install_elk.yml
 
 *ALERT – make sure to provide ELK VM with enough memory to run*
 
@@ -76,7 +76,7 @@ Check if it’s running: sudo docker ps
 
 The following screenshot displays the result of running docker ps after successfully configuring the ELK instance.
 
-![Sudo docker ps](https://github.com/trippyville/PROJECT-ELK/blob/master/Reference/sudo%20docker%20start%20elk%20ps.PNG) 
+![Sudo docker ps reference](https://github.com/trippyville/PROJECT-ELK/blob/master/Reference/sudo%20docker%20start%20elk%20ps.PNG) 
 
 ##install ELK
 ---
@@ -128,71 +128,72 @@ These Beats allow us to collect the following information from each machine:
 	•	Packetbeat: Collects packets that pass through the NIC, similar to Wireshark. IT generate trace of all activity through the network for forensic analysis. 
 
 The playbook below installs Filebeat on the target hosts. The playbook for installing Metricbeat is not included, but looks essentially identical — simply replace Filebeat with Metricbeat  and it will work as expected. NOTE: curl the update http link*
+
 ##installing Filebeat
 ---
 - name: Installing and Launch Filebeat
   hosts: webservers
   become: yes
   tasks:
-    # Use command module
+    #Use command module
   - name: Download filebeat .deb file
     command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb
     
-    # Use command module
+    #Use command module
   - name: Install filebeat .deb
     command: sudo dpkg -i filebeat-7.6.1-amd64.deb
 
-    # Use copy module
+    #Use copy module
   - name: Drop in filebeat.yml
     copy:
       src: /etc/ansible/files/filebeat-config.yml
       dest: /etc/filebeat/filebeat.yml
 
-    # Use command module
+    #Use command module
   - name: Enable and Configure System Module
     command: filebeat modules enable system
 
-    # Use command module
+    #Use command module
   - name: Setup filebeat
     command: filebeat setup
 
-    # Use command module
+    #Use command module
   - name: Start filebeat service
     command: service filebeat start
 
-Using the Playbook
+## Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned we will use JUMPBOX for this purpose.
  
 $ cd /etc/ansible $ mkdir files # Clone Repository + IaC Files the easiest way is to cp file and nano a new .yml file. 
 This copies the playbook files to the correct path
 Next, you must create a hosts file to specify which VMs to run each playbook on. 
 
-Run the commands below:
+	Run the commands below:
 
-$ cd /etc/ansible
-$ cat > hosts <<EOF
+		$ cd /etc/ansible
+		$ cat > hosts <<EOF
 
- [webservers]
-10.10.0.8 ansible_python_interpreter=/usr/bin/python3
-10.10.0.11 ansible_python_interpreter=/usr/bin/python3
+		 [webservers]
+		10.10.0.8 ansible_python_interpreter=/usr/bin/python3
+		10.10.0.11 ansible_python_interpreter=/usr/bin/python3
  
- [elk]
-10.0.0.4 ansible_python_interpreter=/usr/bin/python3
+ 		 [elk]
+		10.0.0.4 ansible_python_interpreter=/usr/bin/python3
 
-EOF
+	EOF
 
 After this, create a folder called “file” to store the file-beat config to run ansible.
 
 Command as follow:
 
-Mkdir files /etc/ansible
+		Mkdir files /etc/ansible
  
  the commands below run the playbook:
 
-bash  $ cd /etc/ansible  
-$ ansible-playbook install_elk.yml elk
-$ ansible-playbook install_filebeat.yml webservers
-$ ansible-playbook install_metricbeat.yml webservers
+	bash  $ cd /etc/ansible  
+		$ ansible-playbook install_elk.yml elk
+		$ ansible-playbook install_filebeat.yml webservers
+		$ ansible-playbook install_metricbeat.yml webservers
 
 To verify success, wait five minutes to give ELK time to start up.
 
