@@ -165,14 +165,15 @@ The playbook below installs Filebeat on the target hosts. The playbook for insta
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned we will use JUMPBOX for this purpose.
  
 	$ cd /etc/ansible
-	$ mkdir files # Clone Repository + IaC Files
+	$ mkdir files 
 	
-the easiest way is to cp file and nano a new .yml file. 
+	# Clone Repository + IaC Files
+	
+The easiest way is to cp the config or yml file or touch nano a new .config or yml file into the docker container in their respecitive folder.
 
-This copies the playbook files to the correct path
 Next, you must create a hosts file to specify which VMs to run each playbook on. 
 
-	Run the commands below:
+	Run this command to insert syntax below:
 
 		$ cd /etc/ansible
 		$ cat > hosts <<EOF
