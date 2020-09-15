@@ -27,8 +27,8 @@ Load balancing ensures that the application will be highly AVAILABLE, in additio
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the FILE SYSTEM OF THE VMs on the NETWORK and system METRICS. 
 	
-•	FILEBEAT monitors the log files or locations that is specify, collects log, events, and forwards them to ELK. (source :Elastic.co)
-•	METRICBEAT helps monitor servers by collecting metrics from the system and services running on the server, such as APACHE. (source: Elastic.co)
+*	FILEBEAT monitors the log files or locations that is specify, collects log, events, and forwards them to ELK. (source :Elastic.co)
+*	METRICBEAT helps monitor servers by collecting metrics from the system and services running on the server, such as APACHE. (source: Elastic.co)
 
 The configuration details of each machine may be found below. 
 
@@ -65,7 +65,7 @@ The playbook implements the following tasks:
  		apt upgrade
  		ansible-playbook install_elk.yml
 
-*ALERT – make sure to provide ELK VM with enough memory to run*
+-*ALERT – make sure to provide ELK VM with enough memory to run-
 
 Then ssh into your docker ELK VM with ssh id_rsa azureuser@40.74.246.77
 Once inside the ELK VM, command to start elk
@@ -117,15 +117,15 @@ Target Machines & Beats
 This ELK server is configured to monitor the following machines: REDteam & BLUEteam VMs, at 10.10.0.8 and 10.10.0.11.
 We have installed the following Beats on these machines: 
 
-•	Filebeat
-•	MetricBeat
-•	Packbeat
+*	Filebeat
+*	MetricBeat
+*	Packbeat
   
 These Beats allow us to collect the following information from each machine: 
 
-•	Filebeat: Detects changes to the filesystem like Apache logs
-•	Metricbeat: Detects changes in system metrics, such as CPU usage, detect SSH login attempts, failed sudo escalations, and CPU/RAM statistics. 
-•	Packetbeat: Collects packets that pass through the NIC, similar to Wireshark. IT generate trace of all activity through the network for forensic analysis. 
+*	Filebeat: Detects changes to the filesystem like Apache logs
+*	Metricbeat: Detects changes in system metrics, such as CPU usage, detect SSH login attempts, failed sudo escalations, and CPU/RAM statistics. 
+*	Packetbeat: Collects packets that pass through the NIC, similar to Wireshark. IT generate trace of all activity through the network for forensic analysis. 
 
 The playbook below installs Filebeat on the target hosts. The playbook for installing Metricbeat is not included, but looks essentially identical — simply replace Filebeat with Metricbeat  and it will work as expected. NOTE: curl the update http link*
 
