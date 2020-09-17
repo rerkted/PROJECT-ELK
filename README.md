@@ -59,20 +59,28 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 The playbook implements the following tasks: 
 - 
-	Scp -i id_rsa  install_elk.yml root@490423f24817:/root or create nano install_elk.yml copy and paste yml file.
- 
+	Scp -i id_rsa  install_elk.yml root@490423f24817:/root or 
+	create nano install_elk.yml copy and paste yml file with the file link [HERE](https://github.com/trippyville/PROJECT-ELK/blob/master/Ansible/install-elk.yml).
+ Then make sure to update your docker by using these command:
  		apt update
  		apt upgrade
  		ansible-playbook install_elk.yml
 
 -*ALERT – make sure to provide ELK VM with enough memory to run-
 
-Then ssh into your docker ELK VM with ssh id_rsa azureuser@40.74.246.77
-Once inside the ELK VM, command to start elk
+Then ssh into your docker ELK VM with "ssh id_rsa azureuser@40.74.246.77"
+Once inside the ELK VM, check if the ELK container is avaliable by using the command:
+	
+	sudo docker container list -a
 
-Check if elk is available: sudo docker container list -a 
-Start: sudo docker start elk
-Check if it’s running: sudo docker ps
+If you see ELK in the container, go ahead and start the ELK by using this command:
+	sudo docker start elk
+	
+Check is the ELK container is running:
+	sudo docker ps
+	
+If it appears with the "sudo docker ps command", it is now active! Head on over to your browser and type in (your-ELK-IPaddress):5601 
+*NOTE: you may have to wait a few minutes before it shows up on your browser. 
 
 The following screenshot displays the result of running docker ps after successfully configuring the ELK instance.
 
