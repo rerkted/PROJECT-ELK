@@ -86,7 +86,7 @@ If you see ELK in the container, go ahead and start the ELK by using this comman
 
 	sudo docker start elk
 	
-Check is the ELK container is running:
+Check if the ELK container is running:
 	
 	sudo docker ps
 	
