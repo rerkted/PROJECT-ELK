@@ -59,12 +59,18 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 The playbook implements the following tasks: 
 - 
-	Scp -i id_rsa  install_elk.yml root@490423f24817:/root or 
-	create nano install_elk.yml copy and paste yml file with the file link [HERE](https://github.com/trippyville/PROJECT-ELK/blob/master/Ansible/install-elk.yml).
- Then make sure to update your docker by using these command:
- 		apt update
- 		apt upgrade
- 		ansible-playbook install_elk.yml
+	Scp -i id_rsa  install_elk.yml root@490423f24817:/root 
+or create a file inside your root container
+	
+	nano install_elk.yml 
+	
+copy and paste yml file with the file link [HERE](https://github.com/trippyville/PROJECT-ELK/blob/master/Ansible/install-elk.yml).
+
+Then make sure to update your docker by using these command:
+
+	apt update
+	apt upgrade
+	ansible-playbook install_elk.yml
 
 -*ALERT – make sure to provide ELK VM with enough memory to run-
 
@@ -74,9 +80,11 @@ Once inside the ELK VM, check if the ELK container is avaliable by using the com
 	sudo docker container list -a
 
 If you see ELK in the container, go ahead and start the ELK by using this command:
+
 	sudo docker start elk
 	
 Check is the ELK container is running:
+	
 	sudo docker ps
 	
 If it appears with the "sudo docker ps command", it is now active! Head on over to your browser and type in (your-ELK-IPaddress):5601 
@@ -126,7 +134,7 @@ This ELK server is configured to monitor the following machines: REDteam & BLUEt
 We have installed the following Beats on these machines: 
 
 *	Filebeat
-*	MetricBeat
+*	MetricBeat (not used during our course)
 *	Packbeat
   
 These Beats allow us to collect the following information from each machine: 
