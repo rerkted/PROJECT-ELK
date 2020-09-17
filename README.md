@@ -1,4 +1,4 @@
-# Elk-PROJECT
+# ELK-Project
 
 ## Automated ELK Stack Deployment
 
@@ -70,6 +70,9 @@ Then make sure to update your docker by using these command:
 
 	apt update
 	apt upgrade
+
+Once the system has finish, you can now install the ansible ELK!
+
 	ansible-playbook install_elk.yml
 
 -*ALERT – make sure to provide ELK VM with enough memory to run-
